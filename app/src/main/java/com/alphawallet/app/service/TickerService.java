@@ -1,12 +1,7 @@
 package com.alphawallet.app.service;
 
 import static com.alphawallet.app.entity.tokenscript.TokenscriptFunction.ZERO_ADDRESS;
-import static com.alphawallet.ethereum.EthereumNetworkBase.ARBITRUM_MAIN_ID;
-import static com.alphawallet.ethereum.EthereumNetworkBase.BASE_MAINNET_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.BINANCE_MAIN_ID;
-import static com.alphawallet.ethereum.EthereumNetworkBase.HOLESKY_ID;
-import static com.alphawallet.ethereum.EthereumNetworkBase.MAINNET_ID;
-import static com.alphawallet.ethereum.EthereumNetworkBase.OKX_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.XLAYER_MAINNET_ID;
 import static org.web3j.protocol.core.methods.request.Transaction.createEthCallTransaction;
 
@@ -754,14 +749,10 @@ public class TickerService
 
     // Update from https://api.coingecko.com/api/v3/coins/list
     // If ticker is pegged against ethereum (L2's) then use 'ethereum' here.
-    public static final Map<Long, String> chainPairs = new HashMap<>()
+    private static final Map<Long, String> chainPairs = new HashMap<Long, String>()
     {{
-        put(MAINNET_ID, "ethereum");
         put(BINANCE_MAIN_ID, "binancecoin");
-        put(ARBITRUM_MAIN_ID, "ethereum");
-        put(OKX_ID, "okb");
         put(XLAYER_MAINNET_ID, "okb");
-        put(BASE_MAINNET_ID, "ethereum");
     }};
 
     public static boolean validateCoinGeckoAPI(Token token)
