@@ -23,6 +23,9 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build Debug APK
+      env:
+        GITHUB_USER: ${{ github.actor }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: ./gradlew assembleNoAnalyticsDebug --stacktrace
 
     - name: Upload Debug APK
