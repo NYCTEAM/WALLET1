@@ -771,24 +771,11 @@ public class TickerService
     public static final Map<Long, String> chainPairs = new HashMap<>()
     {{
         put(MAINNET_ID, "ethereum");
-        put(CLASSIC_ID, "ethereum-classic");
-        put(GNOSIS_ID, "xdai");
         put(BINANCE_MAIN_ID, "binancecoin");
-        put(AVALANCHE_ID, "avalanche-2");
-        put(FANTOM_ID, "fantom");
-        put(POLYGON_ID, "matic-network");
         put(ARBITRUM_MAIN_ID, "ethereum");
-        put(OPTIMISTIC_MAIN_ID, "ethereum");
-        put(KLAYTN_ID, "klay-token");
-        put(IOTEX_MAINNET_ID, "iotex");
-        put(AURORA_MAINNET_ID, "aurora");
-        put(MILKOMEDA_C1_ID, "cardano");
-        put(CRONOS_MAIN_ID, "crypto-com-chain");
         put(OKX_ID, "okb");
-        put(ROOTSTOCK_MAINNET_ID, "rootstock");
-        put(LINEA_ID, "ethereum");
-        put(BASE_MAINNET_ID, "base");
-        put(MANTLE_MAINNET_ID, "mantle");
+        put(XLAYER_MAINNET_ID, "okb");
+        put(BASE_MAINNET_ID, "ethereum");
     }};
 
     public static boolean validateCoinGeckoAPI(Token token)
