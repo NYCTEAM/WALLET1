@@ -66,6 +66,7 @@ android {
         def DEFAULT_POLYGONSCAN_API_KEY = "\"...\""; //Put your Polygonscan developer API key in here to get access to Polygon/Mumbai token discovery and transactions
         def DEFAULT_WALLETCONNECT_PROJECT_ID = "\"40c6071febfd93f4fe485c232a8a4cd9\""
         def DEFAULT_AURORA_API_KEY = "\"HFDDY5BNKGXBB82DE2G8S64C3C41B76PYI\""; //Put your Aurorascan.dev API key here - this one will rate limit as it is common
+        def NOTIFICATION_API_BASE_URL = "\"https://c.alpha-wallet.com/\""
 
         buildConfigField 'int', 'DB_VERSION', '54'
 
