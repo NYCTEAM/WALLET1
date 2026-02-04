@@ -9,6 +9,7 @@ public class NetworkInfo {
     public final String name;
     public final String symbol;
     public final String rpcServerUrl;
+    public final String backupRpcUrl;
     public final String etherscanUrl; // This is used by the Transaction Detail page for the user to visit a website with detailed transaction information
     public final long chainId;
     public final boolean isCustom;
@@ -19,13 +20,25 @@ public class NetworkInfo {
             String rpcServerUrl,
             String etherscanUrl,
             long chainId,
-            boolean isCustom) {
+            boolean isCustom,
+            String backupRpcUrl) {
         this.name = name;
         this.symbol = symbol;
         this.rpcServerUrl = rpcServerUrl;
         this.etherscanUrl = etherscanUrl;
         this.chainId = chainId;
         this.isCustom = isCustom;
+        this.backupRpcUrl = backupRpcUrl;
+    }
+
+    public NetworkInfo(
+            String name,
+            String symbol,
+            String rpcServerUrl,
+            String etherscanUrl,
+            long chainId,
+            boolean isCustom) {
+        this(name, symbol, rpcServerUrl, etherscanUrl, chainId, isCustom, null);
     }
 
 }

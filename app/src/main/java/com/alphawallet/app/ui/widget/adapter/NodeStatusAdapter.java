@@ -6,17 +6,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alphawallet.app.R;
-import com.alphawallet.app.repository.EthereumNetworkBase;
 import com.alphawallet.app.repository.TokenRepository;
 import com.alphawallet.app.widget.TokenIcon;
 import com.alphawallet.ethereum.NetworkInfo;
 
 import org.web3j.protocol.Web3j;
+import org.web3j.protocol.http.HttpService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,21 +98,46 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
     {
         fetchStatusMap.put(chainId, true);
         NodeStatus status = NodeStatus.NOT_RESPONDING;
-        final Web3j web3j = TokenRepository.getWeb3jService(chainId);
+        NetworkInfo info = com.alphawallet.ethereum.EthereumNetworkBase.getNetworkByChain(chainId);
+        //Check US Node
+        long usLatency = checkLatency(info.rpcServerUrl);
+        long hkLatency = -1;
+        if (!TextUtils.isEmpty(info.backupRpcUrl))
+        {
+            hkLatency = checkLatency(info.backupRpcUrl);
+        }
+
+        //Smart switching logic could go here or be triggered here
+        //For now, return the best status
+        long bestLatency = usLatency;
+        if (usLatency == -1 || (hkLatency != -1 && hkLatency < usLatency))
+        {
+            bestLatency = hkLatency;
+        }
+
+        if (bestLatency != -1)
+        {
+            status = bestLatency < 1000 ? NodeStatus.STRONG : NodeStatus.MEDIUM;
+        }
+
+        fetchStatusMap.put(chainId, false);
+        return status;
+    }
+
+    private long checkLatency(String url)
+    {
         try
         {
+            Web3j web3j = Web3j.build(new HttpService(url));
             long startTime = System.currentTimeMillis();
-            String s = web3j.web3ClientVersion().send().getWeb3ClientVersion();
+            web3j.web3ClientVersion().send().getWeb3ClientVersion();
             long endTime = System.currentTimeMillis();
-            long latency = endTime - startTime;
-            status = latency < 1000 ? NodeStatus.STRONG : NodeStatus.MEDIUM;
+            return endTime - startTime;
         }
         catch (Exception e)
         {
-            Timber.e(e, "checkNodeStatus: exception: chainID: %s ", chainId);
+            return -1;
         }
-        fetchStatusMap.put(chainId, false);
-        return status;
     }
 
     private void updateStatus(long chainId, NodeStatus status)
