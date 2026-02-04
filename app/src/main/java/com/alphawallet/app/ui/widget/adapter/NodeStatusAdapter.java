@@ -153,7 +153,7 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
             }
         }
         notifyItemChanged(position);
-        Timber.d("updateStatus: chain: %s-%s: %s", chainId, EthereumNetworkBase.getShortChainName(chainId),status);
+        Timber.d("updateStatus: chain: %s-%s: %s", chainId, com.alphawallet.ethereum.EthereumNetworkBase.getShortChainName(chainId),status);
     }
 
     private void refreshNodeStatus(long chainId, ViewHolder holder)
