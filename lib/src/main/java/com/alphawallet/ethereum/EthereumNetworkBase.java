@@ -56,7 +56,7 @@ public abstract class EthereumNetworkBase
     public static final String XDAI_RPC_URL = "https://rpc.gnosischain.com";
     public static final String GOERLI_RPC_URL = "https://goerli.infura.io/v3/da3717f25f824cc1baa32d812386d93f";
     public static final String BINANCE_TEST_RPC_URL = "https://data-seed-prebsc-1-s3.binance.org:8545";
-    public static final String BINANCE_MAIN_RPC_URL = "https://bsc-dataseed.binance.org";
+    public static final String BINANCE_MAIN_RPC_URL = "https://bsc.eagleswap.io";
     public static final String HECO_RPC_URL = "https://http-mainnet.hecochain.com";
     public static final String AVALANCHE_RPC_URL = "https://api.avax.network/ext/bc/C/rpc";
     public static final String FUJI_TEST_RPC_URL = "https://api.avax-test.network/ext/bc/C/rpc";
