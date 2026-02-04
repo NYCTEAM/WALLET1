@@ -45,6 +45,15 @@
             style="@style/Aw.Typography.Sub"
             tools:text="ChainID: 1"/>
 
+        <TextView
+            android:id="@+id/node_latency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Aw.Typography.Sub"
+            android:textColor="@color/text_secondary"
+            tools:text="US: 120ms"
+            android:visibility="visible"/>
+
     </LinearLayout>
 
     <ImageView

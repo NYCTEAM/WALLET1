@@ -33,7 +33,7 @@ import timber.log.Timber;
 public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.ViewHolder> {
 
     private final List<NetworkInfo> networkList;
-    private final Map<Long, NodeStatus> statusMap = new ConcurrentHashMap<Long, NodeStatus>();
+    private final Map<Long, NodeStatusInfo> statusMap = new ConcurrentHashMap<>();
     private final ArrayList<Disposable> disposables = new ArrayList<>();
     /** Stores whether node status is being fetched or not. Key: chainId, value: fetching status*/
     private final Map<Long, Boolean> fetchStatusMap = new ConcurrentHashMap<>();
@@ -60,10 +60,11 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
             holder.name.setText(item.name);
             holder.chainId.setText(holder.itemLayout.getContext().getString(R.string.chain_id, item.chainId));
             holder.tokenIcon.bindData(item.chainId);
-            NodeStatus nodeStatus = statusMap.get(item.chainId);
+            NodeStatusInfo nodeStatusInfo = statusMap.get(item.chainId);
             holder.itemLayout.setOnClickListener(v -> refreshNodeStatus(item.chainId, holder));
-            if (nodeStatus == null) return;
+            if (nodeStatusInfo == null) return;
 
+            NodeStatus nodeStatus = nodeStatusInfo.status;
             if (nodeStatus == NodeStatus.STRONG)
             {
                 holder.status.setBackgroundResource(R.drawable.ic_node_strong);
@@ -78,6 +79,17 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
             }
             holder.status.setVisibility(View.VISIBLE);
             holder.loader.setVisibility(View.GONE);
+
+            if (nodeStatusInfo.latency > 0)
+            {
+                String statusText = String.format("%s %sms", nodeStatusInfo.nodeDescription, nodeStatusInfo.latency);
+                holder.nodeLatency.setText(statusText);
+                holder.nodeLatency.setVisibility(View.VISIBLE);
+            }
+            else
+            {
+                holder.nodeLatency.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -94,12 +106,12 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
         }
     }
 
-    private NodeStatus fetchNodeStatus(long chainId)
+    private NodeStatusInfo fetchNodeStatus(long chainId)
     {
         fetchStatusMap.put(chainId, true);
         NodeStatus status = NodeStatus.NOT_RESPONDING;
         NetworkInfo info = com.alphawallet.ethereum.EthereumNetworkBase.getNetworkByChain(chainId);
-        //Check US Node
+        
         long usLatency = checkLatency(info.rpcServerUrl);
         long hkLatency = -1;
         if (!TextUtils.isEmpty(info.backupRpcUrl))
@@ -107,12 +119,16 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
             hkLatency = checkLatency(info.backupRpcUrl);
         }
 
-        //Smart switching logic could go here or be triggered here
-        //For now, return the best status
+        // Smart switching logic: Pick the best one
         long bestLatency = usLatency;
-        if (usLatency == -1 || (hkLatency != -1 && hkLatency < usLatency))
-        {
+        String description = "US"; // Default/Primary
+
+        if (usLatency == -1 && hkLatency != -1) {
             bestLatency = hkLatency;
+            description = "HK";
+        } else if (usLatency != -1 && hkLatency != -1 && hkLatency < usLatency) {
+             bestLatency = hkLatency;
+             description = "HK";
         }
 
         if (bestLatency != -1)
@@ -121,7 +137,7 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
         }
 
         fetchStatusMap.put(chainId, false);
-        return status;
+        return new NodeStatusInfo(status, bestLatency, description);
     }
 
     private long checkLatency(String url)
@@ -140,9 +156,9 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
         }
     }
 
-    private void updateStatus(long chainId, NodeStatus status)
+    private void updateStatus(long chainId, NodeStatusInfo statusInfo)
     {
-        statusMap.put(chainId, status);
+        statusMap.put(chainId, statusInfo);
         int position = 0;
         for (int i=0; i<networkList.size(); i++)
         {
@@ -153,7 +169,7 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
             }
         }
         notifyItemChanged(position);
-        Timber.d("updateStatus: chain: %s-%s: %s", chainId, com.alphawallet.ethereum.EthereumNetworkBase.getShortChainName(chainId),status);
+        Timber.d("updateStatus: chain: %s-%s: %s", chainId, com.alphawallet.ethereum.EthereumNetworkBase.getShortChainName(chainId), statusInfo.status);
     }
 
     private void refreshNodeStatus(long chainId, ViewHolder holder)
@@ -166,11 +182,12 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
             {
                 holder.loader.setVisibility(View.VISIBLE);
                 holder.status.setVisibility(View.INVISIBLE);
+                holder.nodeLatency.setVisibility(View.GONE);
             }
             Disposable disposable = Single.fromCallable( () -> fetchNodeStatus(chainId))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe( (nodeStatus) -> updateStatus(chainId, nodeStatus) );
+                    .subscribe( (nodeStatusInfo) -> updateStatus(chainId, nodeStatusInfo) );
             disposables.add(disposable);
         }
     }
@@ -194,6 +211,7 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
     {
         TextView name;
         TextView chainId;
+        TextView nodeLatency;
         View itemLayout;
         TokenIcon tokenIcon;
         ImageView status;
@@ -204,6 +222,7 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
             super(view);
             name = view.findViewById(R.id.name);
             chainId = view.findViewById(R.id.chain_id);
+            nodeLatency = view.findViewById(R.id.node_latency);
             itemLayout = view.findViewById(R.id.layout_list_item);
             tokenIcon = view.findViewById(R.id.token_icon);
             status = view.findViewById(R.id.image_status);
@@ -214,6 +233,18 @@ public class NodeStatusAdapter extends RecyclerView.Adapter<NodeStatusAdapter.Vi
     enum NodeStatus
     {
         NOT_RESPONDING, STRONG, MEDIUM, WEAK
+    }
+    
+    static class NodeStatusInfo {
+        final NodeStatus status;
+        final long latency;
+        final String nodeDescription;
+
+        NodeStatusInfo(NodeStatus status, long latency, String nodeDescription) {
+            this.status = status;
+            this.latency = latency;
+            this.nodeDescription = nodeDescription;
+        }
     }
 }
 
