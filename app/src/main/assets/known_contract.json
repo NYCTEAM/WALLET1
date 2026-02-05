@@ -1,14 +1,17 @@
 {
 "BSC":
   [
+    {"address": "0x480F12D2ECEFe1660e72149c57327f5E0646E5c4", "name": "EAGLE",  "isPopular": true, "network": 56},
     {"address": "0x55d398326f99059fF775485246999027B3197955", "name": "USDT",   "isPopular": true, "network": 56},
     {"address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d", "name": "USDC",   "isPopular": true, "network": 56},
     {"address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56", "name": "BUSD",   "isPopular": true, "network": 56},
     {"address": "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3", "name": "DAI",    "isPopular": true, "network": 56},
+    {"address": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d", "name": "USD1",   "isPopular": true, "network": 56},
+    {"address": "0xce24439f2d9c6a2289f741120fe202248b666666", "name": "USDS",   "isPopular": true, "network": 56},
+    {"address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c", "name": "WBNB",   "isPopular": true, "network": 56},
     {"address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82", "name": "CAKE",   "isPopular": true, "network": 56},
     {"address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8", "name": "ETH",    "isPopular": true, "network": 56},
     {"address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c", "name": "BTCB",   "isPopular": true, "network": 56},
-    {"address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c", "name": "WBNB",   "isPopular": true, "network": 56},
     {"address": "0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47", "name": "ADA",    "isPopular": true, "network": 56},
     {"address": "0xbA2aE424d960c26247Dd6c32edC70B295c744C43", "name": "DOGE",   "isPopular": true, "network": 56},
     {"address": "0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE", "name": "XRP",    "isPopular": true, "network": 56},
@@ -19,13 +22,13 @@
     {"address": "0x1CE0c2827e2eF14D5C4f29a091d735A204794041", "name": "AVAX",   "isPopular": true, "network": 56},
     {"address": "0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402", "name": "DOT",    "isPopular": true, "network": 56},
     {"address": "0x56b6fB708fC5732DEC1Afc8D8556423A2EDcCbD6", "name": "EOS",    "isPopular": true, "network": 56},
-    {"address": "0xBf5140A22578168FD562DCcF235E5D43A02ce9B1", "name": "UNI",    "isPopular": true, "network": 56},
-    {"address": "0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf", "name": "BCH",    "isPopular": true, "network": 56}
+    {"address": "0xBf5140A22578168FD562DCcF235E5D43A02ce9B1", "name": "UNI",    "isPopular": true, "network": 56}
   ],
 "XLAYER":
   [
-    {"address": "0x74b7F16337b8972027F6196A17a631aC6dE26d22", "name": "USDT",   "isPopular": true, "network": 196},
-    {"address": "0x74b7F16337b8972027F6196A17a631aC6dE26d22", "name": "USDC",   "isPopular": true, "network": 196},
+    {"address": "0x5a746ee9933627ed79822d35a3fe812eddd5ba37", "name": "EAGLE",  "isPopular": true, "network": 196},
+    {"address": "0x779ded0c9e1022225f8e0630b35a9b54be713736", "name": "USD₮0",  "isPopular": true, "network": 196},
+    {"address": "0x1e4a5963abfd975d8c9021ce480b42188849d41d", "name": "USDT",   "isPopular": true, "network": 196},
     {"address": "0xe538905cf8410324e03A5A23C1c177a474D59b2b", "name": "WOKB",   "isPopular": true, "network": 196},
     {"address": "0x5A77f1443D16ee5761d310e38b62f77f726bC71c", "name": "WETH",   "isPopular": true, "network": 196}
   ]

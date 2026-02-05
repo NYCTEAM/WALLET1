@@ -82,6 +82,7 @@ public class TickerService
             CONTRACT_ADDR, CHAIN_IDS);
     private static final int    COINGECKO_MAX_FETCH = 10;
     private static final String DEXGURU_API = "https://api.dex.guru/v1/tokens/" + CONTRACT_ADDR + "-" + CHAIN_IDS;
+    private static final String GECKOTERMINAL_API = "https://api.geckoterminal.com/api/v2/networks/" + CHAIN_IDS + "/tokens/" + CONTRACT_ADDR;
     private static final String CURRENCY_CONV = "currency";
     private static final boolean ALLOW_UNVERIFIED_TICKERS = false; //allows verified:false tickers from DEX.GURU. Not recommended
     public static final long TICKER_TIMEOUT = DateUtils.WEEK_IN_MILLIS; //remove ticker if not seen in one week
@@ -706,28 +707,8 @@ public class TickerService
     // Update this list from here: https://api.coingecko.com/api/v3/asset_platforms
     public static final Map<Long, String> coinGeckoChainIdToAPIName = new HashMap<>()
     {{
-        put(MAINNET_ID, "ethereum");
-        put(GNOSIS_ID, "xdai");
         put(BINANCE_MAIN_ID, "binance-smart-chain");
-        put(POLYGON_ID, "polygon-pos");
-        put(CLASSIC_ID, "ethereum-classic");
-        put(FANTOM_ID, "fantom");
-        put(AVALANCHE_ID, "avalanche");
-        put(ARBITRUM_MAIN_ID, "arbitrum-one");
-        put(OKX_ID, "okex-chain");
-        put(1666600000L, "harmony-shard-0");
-        put(321L, "kucoin-community-chain");
-        put(88L, "tomochain");
-        put(42220L, "celo");
-        put(KLAYTN_ID, "klay-token");
-        put(IOTEX_MAINNET_ID, "iotex");
-        put(AURORA_MAINNET_ID, "aurora");
-        put(MILKOMEDA_C1_ID, "cardano");
-        put(CRONOS_MAIN_ID, "cronos");
-        put(ROOTSTOCK_MAINNET_ID, "rootstock");
-        put(LINEA_ID, "linea");
-        put(BASE_MAINNET_ID, "base");
-        put(MANTLE_MAINNET_ID, "mantle");
+        put(XLAYER_MAINNET_ID, "xlayer");
     }};
 
     // For now, don't use Dexguru unless we obtain API key
@@ -737,6 +718,14 @@ public class TickerService
         //put(BINANCE_MAIN_ID, "bsc");
         //put(POLYGON_ID, "polygon");
         //put(AVALANCHE_ID, "avalanche");
+    }};
+
+    // GeckoTerminal network names for custom token price fetching
+    // https://api.geckoterminal.com/api/v2/networks
+    private static final Map<Long, String> geckoTerminalNetworkNames = new HashMap<Long, String>()
+    {{
+        put(BINANCE_MAIN_ID, "bsc");
+        put(XLAYER_MAINNET_ID, "xlayer");
     }};
 
     public void deleteTickers()
