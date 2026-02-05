@@ -156,20 +156,20 @@
         <item>အဟောင်းဆုံး</item>
     </string-array>
     <string-array name="filter_price">
-        <item>醼♂€斸€�€欋€丰€横€嗎€�€夺€羔€欋€踞€♂€欋€坚€勧€丰€横€嗎€�€夺€羔€炨€�€�€?/item>
-        <item>醼♂€欋€坚€勧€丰€横€嗎€�€夺€羔€欋€踞€♂€斸€�€欋€丰€横€嗎€�€夺€羔€炨€�€�€?/item>
+        <item>အနိမ့်မှ အမြင့်</item>
+        <item>အမြင့်မှ အနိမ့်</item>
     </string-array>
     <string-array name="filter_distance">
-        <item>醼♂€�€羔€溼€�€夺€?/item>
-        <item>醽佱€€醼�€溼€�€�€欋€�€愥€?/item>
-        <item>醽呩€€醼�€溼€�€�€欋€�€愥€?/item>
-        <item>醽佱亐醼€醼�€溼€�€�€欋€�€愥€?/item>
+        <item>မည်သည့်</item>
+        <item>1 ကီလိုမီတာ</item>
+        <item>5 ကီလိုမီတာ</item>
+        <item>10 ကီလိုမီတာ</item>
     </string-array>
     <string-array name="filter_timeframe">
-        <item>醼♂€�€羔€溼€�€夺€?/item>
-        <item>醽佱€曖€愥€?/item>
-        <item>醽佱€?/item>
-        <item>醽佱€斸€踞€呩€?/item>
+        <item>မည်သည့်</item>
+        <item>1 ပတ်</item>
+        <item>1 လ</item>
+        <item>1 နှစ်</item>
     </string-array>
     <string-array name="filter_match">
         <item>醼♂€�€羔€溼€�€夺€?/item>

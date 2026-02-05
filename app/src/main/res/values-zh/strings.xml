@@ -152,10 +152,10 @@
         <item>10 å…¬é‡Œ</item>
     </string-array>
     <string-array name="filter_timeframe">
-        <item>ä»»ä½•</item>
-        <item>1 å‘?/item>
-        <item>1 ä¸ªæœˆ</item>
-        <item>1 å¹?/item>
+        <item>任何</item>
+        <item>1 周</item>
+        <item>1 个月</item>
+        <item>1 年</item>
     </string-array>
     <string-array name="filter_match">
         <item>ä»»ä½•</item>
