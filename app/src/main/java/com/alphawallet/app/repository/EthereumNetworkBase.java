@@ -504,70 +504,30 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
         }
     };
 
+    // Chain colors - Only BSC and XLAYER
     private static final LongSparseArray<Integer> chainColours = new LongSparseArray<Integer>()
     {
         {
-            put(MAINNET_ID, R.color.mainnet);
-            put(CLASSIC_ID, R.color.classic);
-            put(GNOSIS_ID, R.color.xdai);
-            put(GOERLI_ID, R.color.goerli);
             put(BINANCE_MAIN_ID, R.color.binance_main);
-            put(BINANCE_TEST_ID, R.color.binance_test);
-            put(FANTOM_ID, R.color.fantom_main);
-            put(FANTOM_TEST_ID, R.color.fantom_test);
-            put(AVALANCHE_ID, R.color.avalanche_main);
-            put(FUJI_TEST_ID, R.color.avalanche_test);
-            put(POLYGON_ID, R.color.polygon_main);
-            put(POLYGON_TEST_ID, R.color.polygon_test);
-            put(POLYGON_AMOY_ID, R.color.polygon_test);
-            put(OPTIMISTIC_MAIN_ID, R.color.optimistic_main);
-            put(CRONOS_MAIN_ID, R.color.cronos_main);
-            put(CRONOS_TEST_ID, R.color.cronos_test);
-            put(ARBITRUM_MAIN_ID, R.color.arbitrum_main);
-            put(PALM_ID, R.color.palm_main);
-            put(PALM_TEST_ID, R.color.palm_test);
-            put(KLAYTN_ID, R.color.klaytn_main);
-            put(KLAYTN_BAOBAB_ID, R.color.klaytn_test);
-            put(IOTEX_MAINNET_ID, R.color.iotex_mainnet);
-            put(IOTEX_TESTNET_ID, R.color.iotex_mainnet);
-            put(AURORA_MAINNET_ID, R.color.aurora_mainnet);
-            put(AURORA_TESTNET_ID, R.color.aurora_testnet);
-            put(MILKOMEDA_C1_ID, R.color.milkomeda);
-            put(SEPOLIA_TESTNET_ID, R.color.sepolia);
-            put(ARBITRUM_TEST_ID, R.color.arbitrum_test);
-            put(OKX_ID, R.color.okx);
-            put(ROOTSTOCK_MAINNET_ID, R.color.rootstock);
-            put(ROOTSTOCK_TESTNET_ID, R.color.rootstock);
-            put(LINEA_ID, R.color.black);
-            put(LINEA_TEST_ID, R.color.pinkish_grey);
-            put(HOLESKY_ID, R.color.azure);
-            put(BASE_MAINNET_ID, R.color.base_logo);
-            put(BASE_TESTNET_ID, R.color.base_logo);
-            put(MANTLE_MAINNET_ID, R.color.rootstock);
-            put(MANTLE_TESTNET_ID, R.color.rootstock);
-            put(MINT_ID, R.color.mint_chain);
-            put(MINT_SEPOLIA_TESTNET_ID, R.color.mint_chain);
+            put(XLAYER_MAINNET_ID, R.color.okx);
         }
     };
 
-    //Does the chain have a gas oracle?
-    //Add it to this list here if so. Note that so far, all gas oracles follow the same format:
-    //  <etherscanAPI from the above list> + GAS_API
-    //If the gas oracle you're adding doesn't follow this spec then you'll have to change the getGasOracle method
-    private static final List<Long> hasGasOracleAPI = Arrays.asList(MAINNET_ID, POLYGON_ID, ARBITRUM_MAIN_ID, AVALANCHE_ID, BINANCE_MAIN_ID, CRONOS_MAIN_ID, GOERLI_ID,
-            SEPOLIA_TESTNET_ID, FANTOM_ID, LINEA_ID, OPTIMISTIC_MAIN_ID, POLYGON_TEST_ID, POLYGON_AMOY_ID, BASE_MAINNET_ID, BASE_TESTNET_ID);
-    private static final List<Long> hasEtherscanGasOracleAPI = Arrays.asList(MAINNET_ID, BINANCE_MAIN_ID, POLYGON_ID);
-    private static final List<Long> hasBlockNativeGasOracleAPI = Arrays.asList(MAINNET_ID, POLYGON_ID);
-    //These chains don't allow custom gas
-    private static final List<Long> hasLockedGas = Arrays.asList(KLAYTN_ID, KLAYTN_BAOBAB_ID);
-    private static final List<Long> hasOpenSeaAPI = Arrays.asList(MAINNET_ID, POLYGON_ID, ARBITRUM_TEST_ID, AVALANCHE_ID, KLAYTN_ID, GOERLI_ID);
+    // Gas oracle - Only BSC has gas oracle API
+    private static final List<Long> hasGasOracleAPI = Arrays.asList(BINANCE_MAIN_ID);
+    private static final List<Long> hasEtherscanGasOracleAPI = Arrays.asList(BINANCE_MAIN_ID);
+    private static final List<Long> hasBlockNativeGasOracleAPI = new ArrayList<>();
+    // No chains have locked gas
+    private static final List<Long> hasLockedGas = new ArrayList<>();
+    // No OpenSea API support
+    private static final List<Long> hasOpenSeaAPI = new ArrayList<>();
 
+    // Block gas limits - BSC and XLAYER use standard limits
     private static final LongSparseArray<BigInteger> blockGasLimit = new LongSparseArray<BigInteger>()
     {
         {
-            put(MAINNET_ID, BigInteger.valueOf(C.GAS_LIMIT_MAX));
-            put(KLAYTN_ID, BigInteger.valueOf(C.GAS_LIMIT_MAX_KLAYTN));
-            put(AURORA_MAINNET_ID, BigInteger.valueOf(C.GAS_LIMIT_MAX_AURORA));
+            put(BINANCE_MAIN_ID, BigInteger.valueOf(C.GAS_LIMIT_MAX));
+            put(XLAYER_MAINNET_ID, BigInteger.valueOf(C.GAS_LIMIT_MAX));
         }
     };
 
