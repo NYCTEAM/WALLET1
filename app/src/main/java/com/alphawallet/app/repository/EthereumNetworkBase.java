@@ -176,23 +176,17 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     public static final String MUMBAI_FALLBACK_RPC_URL = "https://matic-mumbai.chainstacklabs.com";
 
     //All chains that have fiat/real value (not testnet) must be put here
-    //Note: This list also determines the order of display for main net chains in the wallet.
-    //If your wallet prioritises xDai for example, you may want to move the XDAI_ID to the front of this list,
-    //Then xDai would appear as the first token at the top of the wallet
+    // ONLY BSC AND XLAYER MAINNET - This list determines the order of display in the wallet
     private static final List<Long> hasValue = new ArrayList<>(Arrays.asList(
-            MAINNET_ID, GNOSIS_ID, POLYGON_ID, ROOTSTOCK_MAINNET_ID, CLASSIC_ID, LINEA_ID, BASE_MAINNET_ID, MANTLE_MAINNET_ID, MINT_ID, BINANCE_MAIN_ID, AVALANCHE_ID,
-            FANTOM_ID, OPTIMISTIC_MAIN_ID, CRONOS_MAIN_ID, ARBITRUM_MAIN_ID, PALM_ID, KLAYTN_ID, IOTEX_MAINNET_ID, AURORA_MAINNET_ID, MILKOMEDA_C1_ID, OKX_ID));
-
-    private static final List<Long> testnetList = new ArrayList<>(Arrays.asList(
-            SEPOLIA_TESTNET_ID, POLYGON_AMOY_ID, HOLESKY_ID, BASE_TESTNET_ID, MINT_SEPOLIA_TESTNET_ID, GOERLI_ID, BINANCE_TEST_ID,
-            ROOTSTOCK_TESTNET_ID, CRONOS_TEST_ID, MANTLE_TESTNET_ID, POLYGON_TEST_ID, ARBITRUM_TEST_ID, LINEA_TEST_ID, KLAYTN_BAOBAB_ID,
-            FANTOM_TEST_ID, IOTEX_TESTNET_ID, FUJI_TEST_ID,
-            AURORA_TESTNET_ID, PALM_TEST_ID));
-
-    private static final List<Long> deprecatedNetworkList = new ArrayList<>(Arrays.asList(
-            // Add deprecated testnet IDs here
-            POLYGON_TEST_ID, GOERLI_ID
+            BINANCE_MAIN_ID,    // BSC Mainnet (56)
+            XLAYER_MAINNET_ID   // XLAYER Mainnet (196)
     ));
+
+    // No test networks supported
+    private static final List<Long> testnetList = new ArrayList<>();
+
+    // All other networks are deprecated
+    private static final List<Long> deprecatedNetworkList = new ArrayList<>();
 
     public static final Map<Long, String[]> CHAIN_CONFIG_RPC = new HashMap<>();
 
