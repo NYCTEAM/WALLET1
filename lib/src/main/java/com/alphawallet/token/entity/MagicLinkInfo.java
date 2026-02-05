@@ -3,10 +3,8 @@ package com.alphawallet.token.entity;
 import com.alphawallet.ethereum.EthereumNetworkBase;
 import com.alphawallet.ethereum.NetworkInfo;
 
-import static com.alphawallet.ethereum.EthereumNetworkBase.CLASSIC_ID;
-import static com.alphawallet.ethereum.EthereumNetworkBase.GOERLI_ID;
-import static com.alphawallet.ethereum.EthereumNetworkBase.MAINNET_ID;
-import static com.alphawallet.ethereum.EthereumNetworkBase.GNOSIS_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.BINANCE_MAIN_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.XLAYER_MAINNET_ID;
 
 /**
  * Created by James on 2/03/2019.
@@ -38,7 +36,7 @@ public class MagicLinkInfo
         }
         else
         {
-            return EthereumNetworkBase.getNetworkByChain(MAINNET_ID).name;
+            return EthereumNetworkBase.getNetworkByChain(BINANCE_MAIN_ID).name;
         }
     }
 
@@ -46,15 +44,11 @@ public class MagicLinkInfo
         switch ((int)networkId) {
             case 0:
                 return legacyMagicLinkDomain;
-            case (int)MAINNET_ID:
+            case 56: // BSC
             default:
                 return mainnetMagicLinkDomain;
-            case (int)CLASSIC_ID:
-                return classicMagicLinkDomain;
-            case (int) GNOSIS_ID:
+            case 196: // XLAYER
                 return xDaiMagicLinkDomain;
-            case (int)GOERLI_ID:
-                return goerliMagicLinkDomain;
         }
     }
 
@@ -64,30 +58,22 @@ public class MagicLinkInfo
         switch(domain) {
             case mainnetMagicLinkDomain:
             default:
-                return MAINNET_ID;
+                return BINANCE_MAIN_ID;
             case legacyMagicLinkDomain:
-                return MAINNET_ID;
-            case classicMagicLinkDomain:
-                return CLASSIC_ID;
+                return BINANCE_MAIN_ID;
             case xDaiMagicLinkDomain:
-                return GNOSIS_ID;
-            case goerliMagicLinkDomain:
-                return GOERLI_ID;
+                return XLAYER_MAINNET_ID;
         }
     }
 
     //TODO: Refactor to use the centralised source
     public static String getEtherscanURLbyNetwork(long networkId) {
         switch ((int)networkId) {
-            case (int)MAINNET_ID:
+            case 56: // BSC
             default:
-                return mainNetEtherscan;
-            case (int)CLASSIC_ID:
-                return classicEtherscan;
-            case (int) GNOSIS_ID:
-                return xDaiEtherscan;
-            case (int)GOERLI_ID:
-                return goerliEtherscan;
+                return "https://bscscan.com/";
+            case 196: // XLAYER
+                return "https://www.oklink.com/xlayer/";
         }
     }
 
