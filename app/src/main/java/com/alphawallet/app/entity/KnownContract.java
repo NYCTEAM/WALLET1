@@ -22,4 +22,9 @@ public class KnownContract {
     public List<UnknownToken> getXLAYER() {
         return xlayer;
     }
+
+    // For compatibility - return BSC as the main network
+    public List<UnknownToken> getMainNet() {
+        return bsc;
+    }
 }

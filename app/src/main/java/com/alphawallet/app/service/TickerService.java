@@ -2,6 +2,8 @@ package com.alphawallet.app.service;
 
 import static com.alphawallet.app.entity.tokenscript.TokenscriptFunction.ZERO_ADDRESS;
 import static com.alphawallet.ethereum.EthereumNetworkBase.BINANCE_MAIN_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.HOLESKY_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.MAINNET_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.XLAYER_MAINNET_ID;
 import static org.web3j.protocol.core.methods.request.Transaction.createEthCallTransaction;
 
@@ -738,7 +740,7 @@ public class TickerService
 
     // Update from https://api.coingecko.com/api/v3/coins/list
     // If ticker is pegged against ethereum (L2's) then use 'ethereum' here.
-    private static final Map<Long, String> chainPairs = new HashMap<Long, String>()
+    public static final Map<Long, String> chainPairs = new HashMap<Long, String>()
     {{
         put(BINANCE_MAIN_ID, "binancecoin");
         put(XLAYER_MAINNET_ID, "okb");
