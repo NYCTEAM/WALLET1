@@ -9,7 +9,11 @@ import com.alphawallet.app.entity.ContractLocator;
 import com.alphawallet.app.entity.KnownContract;
 import com.alphawallet.app.entity.NetworkInfo;
 import com.alphawallet.app.entity.UnknownToken;
+import com.alphawallet.app.entity.Wallet;
+import com.alphawallet.app.entity.tokens.Token;
 import com.google.gson.Gson;
+
+import io.reactivex.Single;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -95,5 +99,21 @@ public class EthereumNetworkRepository extends EthereumNetworkBase
         }
 
         return new Gson().fromJson(jsonString, KnownContract.class);
+    }
+
+    // Implement interface methods that are not in the parent class
+    public Single<Token[]> getBlankOverrideTokens(Wallet wallet)
+    {
+        return Single.fromCallable(() -> new Token[0]);
+    }
+
+    public Token getBlankOverrideToken()
+    {
+        return null;
+    }
+
+    public Token getBlankOverrideToken(NetworkInfo networkInfo)
+    {
+        return null;
     }
 }
