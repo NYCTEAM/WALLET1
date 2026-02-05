@@ -53,6 +53,7 @@ import static com.alphawallet.ethereum.EthereumNetworkBase.ROOTSTOCK_MAINNET_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.ROOTSTOCK_TESTNET_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.SEPOLIA_TESTNET_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.SEPOLIA_TESTNET_RPC_URL;
+import static com.alphawallet.ethereum.EthereumNetworkBase.XLAYER_MAINNET_ID;
 
 import android.text.TextUtils;
 import android.util.LongSparseArray;
@@ -448,6 +449,12 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
                 "https://arbitrum-sepolia.gateway.tenderly.co",
                 "https://endpoints.omniatech.io/v1/arbitrum/sepolia/public"
         });
+        // XLAYER Mainnet - Official public RPC nodes
+        CHAIN_CONFIG_RPC.put(XLAYER_MAINNET_ID, new String[]{
+                "https://rpc.xlayer.tech",
+                "https://xlayerrpc.okx.com",
+                "https://rpc.ankr.com/xlayer"
+        });
     };
 
     private static final String INFURA_ENDPOINT = ".infura.io/v3/";
@@ -463,174 +470,21 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     }
 
     // for reset built-in network
+    // ONLY BSC AND XLAYER MAINNET - All other networks removed
     private static final LongSparseArray<NetworkInfo> builtinNetworkMap = new LongSparseArray<NetworkInfo>()
     {
         {
-            put(MAINNET_ID, new NetworkInfo(C.ETHEREUM_NETWORK_NAME, C.ETH_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(MAINNET_ID),
-                    "https://cn.etherscan.com/tx/", MAINNET_ID,
-                    "https://api-cn.etherscan.com/api?"));
-            put(CLASSIC_ID, new NetworkInfo(C.CLASSIC_NETWORK_NAME, C.ETC_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(CLASSIC_ID),
-                    "https://blockscout.com/etc/mainnet/tx/", CLASSIC_ID,
-                    "https://blockscout.com/etc/mainnet/api?"));
-            put(GNOSIS_ID, new NetworkInfo(C.XDAI_NETWORK_NAME, C.xDAI_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(GNOSIS_ID),
-                    "https://gnosis.blockscout.com/tx/", GNOSIS_ID, "https://gnosis.blockscout.com?"));
-            put(GOERLI_ID, new NetworkInfo(C.GOERLI_NETWORK_NAME, C.GOERLI_SYMBOL,
-                    new String[] {GOERLI_RPC_URL, GOERLI_FALLBACK_RPC_URL},
-                    "https://goerli.etherscan.io/tx/", GOERLI_ID,
-                    "https://api-goerli.etherscan.io/api?"));
-            put(BINANCE_TEST_ID, new NetworkInfo(C.BINANCE_TEST_NETWORK, C.BINANCE_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(BINANCE_TEST_ID),
-                    "https://testnet.bscscan.com/tx/", BINANCE_TEST_ID,
-                    "https://api-testnet.bscscan.com/api?"));
+            // BSC Mainnet with official public RPC
             put(BINANCE_MAIN_ID, new NetworkInfo(C.BINANCE_MAIN_NETWORK, C.BINANCE_SYMBOL,
                     CHAIN_CONFIG_RPC.get(BINANCE_MAIN_ID),
                     "https://bscscan.com/tx/", BINANCE_MAIN_ID,
                     "https://api.bscscan.com/api?"));
-            put(AVALANCHE_ID, new NetworkInfo(C.AVALANCHE_NETWORK, C.AVALANCHE_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(AVALANCHE_ID),
-                    "https://cchain.explorer.avax.network/tx/", AVALANCHE_ID,
-                    "https://api.covalenthq.com/v1/" + COVALENT));
-            put(FUJI_TEST_ID, new NetworkInfo(C.FUJI_TEST_NETWORK, C.AVALANCHE_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(FUJI_TEST_ID),
-                    "https://cchain.explorer.avax-test.network/tx/", FUJI_TEST_ID,
-                    "https://api.covalenthq.com/v1/" + COVALENT));
-            put(FANTOM_ID, new NetworkInfo(C.FANTOM_NETWORK, C.FANTOM_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(FANTOM_ID),
-                    "https://ftmscan.com/tx/", FANTOM_ID,
-                    "https://api.ftmscan.com/api?"));
-            put(FANTOM_TEST_ID, new NetworkInfo(C.FANTOM_TEST_NETWORK, C.FANTOM_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(FANTOM_TEST_ID),
-                    "https://explorer.testnet.fantom.network/tx/", FANTOM_TEST_ID,
-                    "https://api.covalenthq.com/v1/" + COVALENT)); //NB: Fantom testnet not yet supported by Covalent
-            put(POLYGON_ID, new NetworkInfo(C.POLYGON_NETWORK, C.POLYGON_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(POLYGON_ID),
-                    "https://polygonscan.com/tx/", POLYGON_ID,
-                    "https://api.polygonscan.com/api?"));
-            put(POLYGON_TEST_ID, new NetworkInfo(C.POLYGON_TEST_NETWORK, C.POLYGON_SYMBOL,
-                    new String[] {FREE_MUMBAI_RPC_URL},
-                    "https://mumbai.polygonscan.com/tx/", POLYGON_TEST_ID,
-                    "https://api-testnet.polygonscan.com/api?"));
-            put(POLYGON_AMOY_ID, new NetworkInfo(C.AMOY_TESTNET_NAME, C.AMOY_TESTNET_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(POLYGON_AMOY_ID),
-                    "https://amoy.polygonscan.com/tx/", POLYGON_AMOY_ID,
-                    "https://api-amoy.polygonscan.com/api?"));
-            put(OPTIMISTIC_MAIN_ID, new NetworkInfo(C.OPTIMISTIC_NETWORK, C.ETH_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(OPTIMISTIC_MAIN_ID),
-                    "https://optimistic.etherscan.io/tx/", OPTIMISTIC_MAIN_ID,
-                    "https://api-optimistic.etherscan.io/api?"));
-            put(CRONOS_MAIN_ID, new NetworkInfo(C.CRONOS_MAIN_NETWORK, C.CRONOS_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(CRONOS_MAIN_ID),
-                    "https://cronos.org/explorer/tx/", CRONOS_MAIN_ID,
-                    "https://cronos.org/explorer/api?"));
-            put(CRONOS_TEST_ID, new NetworkInfo(C.CRONOS_TEST_NETWORK, C.CRONOS_TEST_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(CRONOS_TEST_ID),
-                    "https://explorer.cronos.org/testnet/tx/", CRONOS_TEST_ID,
-                    "https://testnet.cronoscan.com/api?"));
-            put(ARBITRUM_MAIN_ID, new NetworkInfo(C.ARBITRUM_ONE_NETWORK, C.ARBITRUM_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(ARBITRUM_MAIN_ID),
-                    "https://arbiscan.io/tx/", ARBITRUM_MAIN_ID,
-                    "https://api.arbiscan.io/api?"));
-            put(PALM_ID, new NetworkInfo(C.PALM_NAME, C.PALM_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(PALM_ID),
-                    "https://explorer.palm.io/tx/", PALM_ID,
-                    "https://explorer.palm.io/api?"));
-            put(PALM_TEST_ID, new NetworkInfo(C.PALM_TEST_NAME, C.PALM_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(PALM_TEST_ID),
-                    "https://explorer.palm-uat.xyz/tx/", PALM_TEST_ID,
-                    "https://explorer.palm-uat.xyz/api?"));
-            put(KLAYTN_ID, new NetworkInfo(C.KLAYTN_NAME, C.KLAYTN_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(KLAYTN_ID),
-                "https://kaiascan.io/tx/", KLAYTN_ID,
-                ""));
-            put(KLAYTN_BAOBAB_ID, new NetworkInfo(C.KLAYTN_BAOBAB_NAME, C.KLAYTN_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(KLAYTN_BAOBAB_ID),
-                "https://kairos.kaiascan.io/tx/", KLAYTN_BAOBAB_ID,
-                ""));
-            put(IOTEX_MAINNET_ID, new NetworkInfo(C.IOTEX_NAME, C.IOTEX_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(IOTEX_MAINNET_ID),
-                    "https://iotexscan.io/tx/", IOTEX_MAINNET_ID,
-                    "https://api.covalenthq.com/v1/" + COVALENT));
-            put(IOTEX_TESTNET_ID, new NetworkInfo(C.IOTEX_TESTNET_NAME, C.IOTEX_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(IOTEX_TESTNET_ID),
-                    "https://testnet.iotexscan.io/tx/", IOTEX_TESTNET_ID,
-                    "https://api.covalenthq.com/v1/" + COVALENT));
-            put(AURORA_MAINNET_ID, new NetworkInfo(C.AURORA_MAINNET_NAME, C.ETH_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(AURORA_MAINNET_ID),
-                    "https://aurorascan.dev/tx/", AURORA_MAINNET_ID,
-                    "https://api.aurorascan.dev/api?"));
-            put(AURORA_TESTNET_ID, new NetworkInfo(C.AURORA_TESTNET_NAME, C.ETH_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(AURORA_TESTNET_ID),
-                    "https://testnet.aurorascan.dev/tx/", AURORA_TESTNET_ID,
-                    "https://api-testnet.aurorascan.dev/api?"));
-            put(MILKOMEDA_C1_ID, new NetworkInfo(C.MILKOMEDA_NAME, C.MILKOMEDA_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(MILKOMEDA_C1_ID),
-                    "https://explorer-mainnet-cardano-evm.c1.milkomeda.com/tx/", MILKOMEDA_C1_ID,
-                    "https://explorer-mainnet-cardano-evm.c1.milkomeda.com/api?"));
-            put(SEPOLIA_TESTNET_ID, new NetworkInfo(C.SEPOLIA_TESTNET_NAME, C.SEPOLIA_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(SEPOLIA_TESTNET_ID),
-                    "https://sepolia.etherscan.io/tx/", SEPOLIA_TESTNET_ID,
-                    "https://api-sepolia.etherscan.io/api?"));
-            put(ARBITRUM_TEST_ID, new NetworkInfo(C.ARBITRUM_TESTNET_NAME, C.ARBITRUM_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(ARBITRUM_TEST_ID),
-                    "https://testnet.arbiscan.io/tx/", ARBITRUM_TEST_ID,
-                    "https://api-goerli.arbiscan.io/api?"));
-            put(OKX_ID, new NetworkInfo(C.OKX_NETWORK_NAME, C.OKX_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(OKX_ID),
-                "https://www.oklink.com/en/okc/tx/", OKX_ID,
-                "https://www.oklink.com/api"));
-
-            put(ROOTSTOCK_MAINNET_ID, new NetworkInfo(C.ROOTSTOCK_NETWORK_NAME, C.ROOTSTOCK_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(ROOTSTOCK_MAINNET_ID),
-                    "https://blockscout.com/rsk/mainnet/tx/", ROOTSTOCK_MAINNET_ID,
-                    "https://blockscout.com/rsk/mainnet/api?"));
-            put(ROOTSTOCK_TESTNET_ID, new NetworkInfo(C.ROOTSTOCK_TESTNET_NAME, C.ROOTSTOCK_TEST_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(ROOTSTOCK_TESTNET_ID),
-                    "", ROOTSTOCK_TESTNET_ID,
-                    ""));
-            put(LINEA_ID, new NetworkInfo(C.LINEA_NAME, C.ETH_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(LINEA_ID),
-                    "https://lineascan.build/tx/", LINEA_ID,
-                    "https://api.lineascan.build/api?"));
-            put(LINEA_TEST_ID, new NetworkInfo(C.LINEA_TESTNET_NAME, C.ETH_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(LINEA_TEST_ID),
-                    "https://sepolia.lineascan.build/tx/", LINEA_TEST_ID,
-                    "https://api-sepolia.lineascan.build/api?"));
-            put(HOLESKY_ID, new NetworkInfo(C.HOLESKY_TESTNET_NAME, C.HOLESKY_TEST_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(HOLESKY_ID),
-                    "https://holesky.etherscan.io/tx/", HOLESKY_ID,
-                    "https://api-holesky.etherscan.io/api?"));
-            put(BASE_MAINNET_ID, new NetworkInfo(C.BASE_MAINNET_NAME, C.ETH_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(BASE_MAINNET_ID),
-                    "https://basescan.org/tx/", BASE_MAINNET_ID,
-                    "https://api.basescan.org/api?"));
-            put(BASE_TESTNET_ID, new NetworkInfo(C.BASE_TESTNET_NAME, C.ETH_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(BASE_TESTNET_ID),
-                    "https://sepolia.basescan.org/tx/", BASE_TESTNET_ID,
-                    "https://api-sepolia.basescan.org/api?"));
-
-            put(MANTLE_MAINNET_ID, new NetworkInfo(C.MANTLE_MAINNET_NAME, C.MANTLE_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(MANTLE_MAINNET_ID),
-                    "https://explorer.mantle.xyz/tx/", MANTLE_MAINNET_ID,
-                    "https://explorer.mantle.xyz/api?"));
-
-            put(MANTLE_TESTNET_ID, new NetworkInfo(C.MANTLE_TESTNET_NAME, C.MANTLE_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(MANTLE_TESTNET_ID),
-                    "https://explorer.sepolia.mantle.xyz/tx/", MANTLE_TESTNET_ID,
-                    "https://explorer.sepolia.mantle.xyz/api?"));
-
-            // Add deprecated networks after this line
-            put(MINT_ID, new NetworkInfo(C.MINT_MAINNET_NAME, C.ETH_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(MINT_ID),
-                    "https://explorer.mintchain.io/tx/", MINT_ID,
-                    "https://explorer.mintchain.io/api/v2/"));
-
-            put(MINT_SEPOLIA_TESTNET_ID, new NetworkInfo(C.MINT_TESTNET_NAME, C.ETH_SYMBOL,
-                    CHAIN_CONFIG_RPC.get(MINT_SEPOLIA_TESTNET_ID),
-                    "https://sepolia-testnet-explorer.mintchain.io/tx/", MINT_SEPOLIA_TESTNET_ID,
-                    "https://sepolia-testnet-explorer.mintchain.io/api/v2/")); //https://sepolia-testnet-explorer.mintchain.io/api/v2/addresses/0x76626Fc07d050d59c9fc1Ac5b853a9952B5E9Afe/transactions?filter=to%20%7C%20from
+            
+            // XLAYER Mainnet with official public RPC
+            put(XLAYER_MAINNET_ID, new NetworkInfo("X Layer", "OKB",
+                    CHAIN_CONFIG_RPC.get(XLAYER_MAINNET_ID),
+                    "https://www.oklink.com/xlayer/tx/", XLAYER_MAINNET_ID,
+                    "https://www.oklink.com/api/v5/explorer/xlayer/api?"));
         }
     };
 
@@ -638,95 +492,21 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     //the entries are automatically sorted into numerical order
     private static final LongSparseArray<NetworkInfo> networkMap = builtinNetworkMap.clone();
 
+    // Chain logos - Only BSC and XLAYER
     private static final LongSparseArray<Integer> chainLogos = new LongSparseArray<Integer>()
     {
         {
-            put(MAINNET_ID, R.drawable.ic_token_eth);
-            put(CLASSIC_ID, R.drawable.ic_icons_network_etc); //classic_logo
-            put(GNOSIS_ID, R.drawable.ic_icons_network_gnosis);
-            put(GOERLI_ID, R.drawable.ic_goerli);
             put(BINANCE_MAIN_ID, R.drawable.ic_binance_logo);
-            put(BINANCE_TEST_ID, R.drawable.ic_icons_tokens_bnb_testnet);
-            put(FANTOM_ID, R.drawable.ic_fantom);
-            put(FANTOM_TEST_ID, R.drawable.ic_icons_fantom_test);
-            put(AVALANCHE_ID, R.drawable.ic_icons_tokens_avalanche);
-            put(FUJI_TEST_ID, R.drawable.ic_icons_tokens_avalanche_testnet);
-            put(POLYGON_ID, R.drawable.ic_icons_polygon);
-            put(POLYGON_AMOY_ID, R.drawable.ic_icons_tokens_mumbai);
-            put(OPTIMISTIC_MAIN_ID, R.drawable.ic_optimism_logo);
-            put(CRONOS_MAIN_ID, R.drawable.ic_cronos_mainnet);
-            put(CRONOS_TEST_ID, R.drawable.ic_cronos);
-            put(ARBITRUM_MAIN_ID, R.drawable.ic_icons_arbitrum);
-            put(PALM_ID, R.drawable.ic_icons_network_palm);
-            put(PALM_TEST_ID, R.drawable.palm_logo_test);
-            put(KLAYTN_ID, R.drawable.ic_icons_kaia);
-            put(KLAYTN_BAOBAB_ID, R.drawable.ic_icons_kaia_test);
-            put(IOTEX_MAINNET_ID, R.drawable.ic_iotex);
-            put(IOTEX_TESTNET_ID, R.drawable.ic_iotex_test);
-            put(AURORA_MAINNET_ID, R.drawable.ic_aurora);
-            put(AURORA_TESTNET_ID, R.drawable.ic_aurora_test);
-            put(MILKOMEDA_C1_ID, R.drawable.ic_milkomeda);
-            put(SEPOLIA_TESTNET_ID, R.drawable.ic_sepolia_test);
-            put(ARBITRUM_TEST_ID, R.drawable.ic_icons_arbitrum_test);
-            put(OKX_ID, R.drawable.ic_okx);
-            put(ROOTSTOCK_MAINNET_ID, R.drawable.ic_rootstock_logo);
-            put(ROOTSTOCK_TESTNET_ID, R.drawable.ic_rootstock_test_logo);
-            put(LINEA_ID, R.drawable.ic_icons_linea);
-            put(LINEA_TEST_ID, R.drawable.ic_icons_linea_testnet);
-            put(HOLESKY_ID, R.drawable.ic_icons_holesky);
-            put(POLYGON_TEST_ID, R.drawable.ic_icons_tokens_mumbai);
-            put(BASE_MAINNET_ID, R.drawable.ic_base_logo);
-            put(BASE_TESTNET_ID, R.drawable.ic_base_test_logo);
-            put(MANTLE_MAINNET_ID, R.drawable.ic_mantle_logo);
-            put(MANTLE_TESTNET_ID, R.drawable.ic_mantle_test_logo);
-            put(MINT_ID, R.drawable.ic_mint_logo);
-            put(MINT_SEPOLIA_TESTNET_ID, R.drawable.ic_mint_test_logo);
+            put(XLAYER_MAINNET_ID, R.drawable.ic_okx); // XLAYER uses OKX logo
         }
     };
 
+    // Small chain logos - Only BSC and XLAYER
     private static final LongSparseArray<Integer> smallChainLogos = new LongSparseArray<Integer>()
     {
         {
-            put(MAINNET_ID, R.drawable.ic_icons_network_eth);
-            put(CLASSIC_ID, R.drawable.ic_icons_network_etc);
-            put(GNOSIS_ID, R.drawable.ic_icons_network_gnosis);
-            put(GOERLI_ID, R.drawable.ic_goerli);
             put(BINANCE_MAIN_ID, R.drawable.ic_icons_network_bsc);
-            put(BINANCE_TEST_ID, R.drawable.ic_icons_tokens_bnb_testnet);
-            put(FANTOM_ID, R.drawable.ic_icons_network_fantom);
-            put(FANTOM_TEST_ID, R.drawable.ic_icons_fantom_test);
-            put(AVALANCHE_ID, R.drawable.ic_icons_network_avalanche);
-            put(FUJI_TEST_ID, R.drawable.ic_icons_tokens_avalanche_testnet);
-            put(POLYGON_ID, R.drawable.ic_icons_network_polygon);
-            put(POLYGON_AMOY_ID, R.drawable.ic_icons_tokens_mumbai);
-            put(POLYGON_TEST_ID, R.drawable.ic_icons_tokens_mumbai);
-            put(OPTIMISTIC_MAIN_ID, R.drawable.ic_icons_network_optimism);
-            put(CRONOS_MAIN_ID, R.drawable.ic_cronos_mainnet);
-            put(CRONOS_TEST_ID, R.drawable.ic_cronos);
-            put(ARBITRUM_MAIN_ID, R.drawable.ic_icons_network_arbitrum);
-            put(PALM_ID, R.drawable.ic_icons_network_palm);
-            put(PALM_TEST_ID, R.drawable.palm_logo_test);
-            put(KLAYTN_ID, R.drawable.ic_icons_kaia);
-            put(KLAYTN_BAOBAB_ID, R.drawable.ic_icons_kaia_test);
-            put(IOTEX_MAINNET_ID, R.drawable.ic_iotex);
-            put(IOTEX_TESTNET_ID, R.drawable.ic_iotex_test);
-            put(AURORA_MAINNET_ID, R.drawable.ic_aurora);
-            put(AURORA_TESTNET_ID, R.drawable.ic_aurora_test);
-            put(MILKOMEDA_C1_ID, R.drawable.ic_milkomeda);
-            put(SEPOLIA_TESTNET_ID, R.drawable.ic_sepolia_test);
-            put(ARBITRUM_TEST_ID, R.drawable.ic_icons_arbitrum_test);
-            put(OKX_ID, R.drawable.ic_okx);
-            put(ROOTSTOCK_MAINNET_ID, R.drawable.ic_rootstock_logo);
-            put(ROOTSTOCK_TESTNET_ID, R.drawable.ic_rootstock_test_logo);
-            put(LINEA_ID, R.drawable.ic_icons_linea);
-            put(LINEA_TEST_ID, R.drawable.ic_icons_linea_testnet);
-            put(HOLESKY_ID, R.drawable.ic_icons_holesky);
-            put(BASE_MAINNET_ID, R.drawable.ic_base_logo);
-            put(BASE_TESTNET_ID, R.drawable.ic_base_test_logo);
-            put(MANTLE_MAINNET_ID, R.drawable.ic_mantle_logo);
-            put(MANTLE_TESTNET_ID, R.drawable.ic_mantle_test_logo);
-            put(MINT_ID, R.drawable.ic_mint_logo);
-            put(MINT_SEPOLIA_TESTNET_ID, R.drawable.ic_mint_test_logo);
+            put(XLAYER_MAINNET_ID, R.drawable.ic_okx); // XLAYER uses OKX logo
         }
     };
 
