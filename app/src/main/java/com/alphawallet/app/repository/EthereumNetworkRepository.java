@@ -1,7 +1,7 @@
 package com.alphawallet.app.repository;
 
-import static com.alphawallet.ethereum.EthereumNetworkBase.GNOSIS_ID;
-import static com.alphawallet.ethereum.EthereumNetworkBase.MAINNET_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.BINANCE_MAIN_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.XLAYER_MAINNET_ID;
 
 import android.content.Context;
 
@@ -53,24 +53,24 @@ public class EthereumNetworkRepository extends EthereumNetworkBase
         return new ArrayList<>(popularTokens.values());
     }
 
-    //Note: There is an issue with this method - if a contract is the same address on XDAI and MAINNET_ID it needs to be refactored
+    //Load popular tokens for BSC and XLAYER networks
     private void buildPopularTokenMap(List<Long> networkFilters)
     {
         KnownContract knownContract = readContracts();
         if (knownContract == null) return;
 
-        if (networkFilters == null || networkFilters.contains(MAINNET_ID))
+        if (networkFilters == null || networkFilters.contains(BINANCE_MAIN_ID))
         {
-            for (UnknownToken unknownToken: knownContract.getMainNet())
+            for (UnknownToken unknownToken: knownContract.getBSC())
             {
-                popularTokens.put(unknownToken.address.toLowerCase(), new ContractLocator(unknownToken.address, MAINNET_ID));
+                popularTokens.put(unknownToken.address.toLowerCase(), new ContractLocator(unknownToken.address, BINANCE_MAIN_ID));
             }
         }
-        if (networkFilters == null || networkFilters.contains(GNOSIS_ID))
+        if (networkFilters == null || networkFilters.contains(XLAYER_MAINNET_ID))
         {
-            for (UnknownToken unknownToken: knownContract.getXDAI())
+            for (UnknownToken unknownToken: knownContract.getXLAYER())
             {
-                popularTokens.put(unknownToken.address.toLowerCase(), new ContractLocator(unknownToken.address, GNOSIS_ID));
+                popularTokens.put(unknownToken.address.toLowerCase(), new ContractLocator(unknownToken.address, XLAYER_MAINNET_ID));
             }
         }
     }

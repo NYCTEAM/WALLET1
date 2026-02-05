@@ -7,19 +7,19 @@ import com.google.gson.annotations.SerializedName;
 
 public class KnownContract {
 
-    @SerializedName("MainNet")
+    @SerializedName("BSC")
     @Expose
-    private final List<UnknownToken> mainNet = null;
+    private final List<UnknownToken> bsc = null;
 
-    @SerializedName("xDAI")
+    @SerializedName("XLAYER")
     @Expose
-    private final List<UnknownToken> xDAI = null;
+    private final List<UnknownToken> xlayer = null;
 
-    public List<UnknownToken> getMainNet() {
-        return mainNet;
+    public List<UnknownToken> getBSC() {
+        return bsc;
     }
 
-    public List<UnknownToken> getXDAI() {
-        return xDAI;
+    public List<UnknownToken> getXLAYER() {
+        return xlayer;
     }
 }
