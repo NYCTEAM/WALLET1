@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- String related to sending -->
+    <string name="action_send">鍙戦€?/string>
+    <string name="action_send_tkn">鍙戦€?1$s</string>
+    <string name="recipient">鎺ユ敹浜?/string>
+    <string name="error_field_required">姝や负蹇呭～瀛楁</string>
+    <string name="action_settings">璁剧疆</string>
+    <string name="title_account_list">閽卞寘</string>
+    <string name="confirm_delete_account">璇风‘淇濇偍宸插浠芥閽卞寘銆?/string>
+    <string name="copy">澶嶅埗鍒板壀璐存澘</string>
+    <string name="sent">鍙戦€佷簡</string>
+    <string name="received">鏀跺埌浜?/string>
+    <string name="ok">纭畾</string>
+    <string name="barcode_error_format">鏃犳晥浜岀淮鐮佹牸寮忥細%s</string>
+    <string name="title_delete_account">鏄惁纭畾瑕佸垹闄ら挶鍖咃紵</string>
+    <string name="error_import">瀵煎叆瀵嗛挜搴撴椂鍑洪敊</string>
+    <string name="error_deleting_account">鍒犻櫎閽卞寘鏃跺嚭閿?/string>
+    <string name="do_manage_make_backup">鎮ㄦ槸鍚﹀凡鎴愬姛杩涜澶囦唤锛?/string>
+    <string name="yes_continue">鏄紝缁х画</string>
+    <string name="no_repeat">鍚︼紝閲嶅</string>
+    <string name="transfer">杞Щ%s</string>
+    <string name="action_buy">璐拱%s</string>
+    <string name="try_again">閲嶈瘯</string>
+    <string name="already_have_account">宸茬粡鏈夐挶鍖呬簡鍚楋紵</string>
+    <string name="action_create_new_account">鍒涘缓鏂伴挶鍖?/string>
+    <string name="unknown_error">鍙戠敓閿欒銆?/string>
+    <string name="no_tokens">鏈壘鍒颁唬甯併€?/string>
+    <!-- Titles -->
+    <string name="title_my_address">鎴戠殑鍦板潃</string>
+    <string name="title_activity_send">鍙戦€?/string>
+    <string name="title_activity_confirmation">纭</string>
+    <string name="title_transaction_details">浜ゆ槗璇︽儏</string>
+    <!-- Dialog titles -->
+    <string name="title_dialog_error">閿欒</string>
+    <string name="title_dialog_handling">澶勭悊涓€︹€?/string>
+    <string name="title_dialog_add_account">娣诲姞閽卞寘</string>
+    <string name="title_dialog_deposit">鎮ㄦ兂濡備綍璐拱锛?/string>
+    <!-- Dialog messages-->
+    <string name="toast_message_wallet_imported">閽卞寘宸插鍏?/string>
+    <string name="toast_message_wallet_exported">澶囦唤宸插垱寤?/string>
+    <string name="toast_qr_code_no_address">浜岀淮鐮佹湭鍖呭惈鏈夋晥鍦板潃</string>
+    <!-- Labels -->
+    <string name="label_from">鏉ユ簮鍦板潃</string>
+    <string name="label_to">鎺ユ敹鍦板潃</string>
+    <string name="label_gas_limit">鐕冩枡闄愬埗</string>
+    <string name="label_gas_price">鐕冩枡浠锋牸</string>
+    <string name="label_gas_price_gwei">鐕冩枡浠锋牸 (GWEI)</string>
+    <string name="label_gas_price_max">Max Fee (GWEI)</string>
+    <string name="label_old_gas_price">鍏堝墠鐨勭噧鏂欎环鏍?/string>
+    <string name="label_network_fee">浜ゆ槗鎵嬬画璐?/string>
+    <string name="button_ok">纭畾</string>
+    <!-- Subtitles -->
+    <string name="subtitle_from">鏉ユ簮鍦板潃</string>
+    <string name="subtitle_to">鎺ユ敹鍦板潃</string>
+    <string name="subtitle_gas_fee">鐕冩枡璐圭敤</string>
+    <string name="subtitle_gas_price">鐕冩枡浠锋牸</string>
+    <string name="subtitle_gas_used">浜ゆ槗鐕冩枡璐圭敤</string>
+    <string name="subtitle_network_fee">浜ゆ槗鎵嬬画璐?/string>
+    <string name="subtitle_transaction_num">浜ゆ槗 #</string>
+    <string name="subtitle_transaction_hash_num">Transaction Hash#</string>
+    <string name="subtitle_transaction_time">浜ゆ槗鏃堕棿</string>
+    <string name="subtitle_block_num">鍖哄潡 #</string>
+    <string name="subtitle_block">鍖哄潡</string>
+    <!-- Actions -->
+    <string name="action_share">鍏变韩</string>
+    <string name="action_more_details">鏇村璇︽儏</string>
+    <string name="action_add_wallet">娣诲姞閽卞寘</string>
+    <string name="action_open_etherscan">鍦˙lock Explorer涓婃煡鐪?/string>
+    <string name="action_changelly">Changelly</string>
+    <!-- Subject -->
+    <string name="subject_transaction_detail">浜ゆ槗璇︽儏</string>
+    <string name="error_fail_generate_qr">鏃犳硶鐢熸垚浜岀淮鐮併€?/string>
+    <string name="error_invalid_address">鏃犳晥鍦板潃</string>
+    <string name="error_invalid_amount">鏃犳晥閲戦</string>
+    <string name="error_transaction_failed">浜ゆ槗閿欒</string>
+    <string name="error_transaction_may_fail">鑺傜偣棰勬祴姝や氦鏄撳皢澶辫触銆?缁х画锛?/string>
+    <string name="error_import_failed">瀵煎叆浠ょ墝澶辫触</string>
+    <string name="error_must_numeric">蹇呴』涓轰竴涓暟鍊笺€?/string>
+    <string name="transaction_succeeded">浜ゆ槗鎴愬姛</string>
+    <string name="NA">涓嶉€傜敤</string>
+    <string name="error_wallet_not_selected">鏈€夋嫨閽卞寘</string>
+    <string name="no_transactions_yet">浜ゆ槗娲诲姩灏嗗嚭鐜板湪杩欓噷</string>
+    <string name="title_dialog_sending">鍙戦€佷腑鈥︹€?/string>
+    <string name="scan_qr">浠庝簩缁寸爜鑾峰彇鍦板潃</string>
+    <string name="info_gas_price">鐕冩枡浠锋牸瓒婇珮锛屾偍鐨勪氦鏄撹垂鐢ㄥ氨瓒婃槀璐碉紝浣嗕互澶潑缃戠粶瀵逛氦鏄撶殑澶勭悊閫熷害鍒欒秺蹇€?/string>
+    <string name="info_gas_limit">鐕冩枡闄愬埗鍙槻姝㈡櫤鑳藉悎绾︽秷鑰楁帀鎮ㄧ殑鎵€鏈変互澶竵銆傛垜浠細灏濊瘯涓烘偍鑷姩璁＄畻鐕冩枡闄愬埗锛屼絾閮ㄥ垎鏅鸿兘鍚堢害鍙兘闇€瑕佽嚜瀹氫箟鐕冩枡闄愬埗銆?/string>
+    <string name="title_send_settings">楂樼骇</string>
+    <!--<string name="title_activity_barcode">Barcode Scan</string>-->
+    <string name="error_add_token">鏃犳硶娣诲姞浠ｅ竵銆?/string>
+    <string name="error_already_added">宸叉坊鍔?/string>
+    <string name="error_export">鏃犳硶瀵煎嚭閽卞寘</string>
+    <string name="error_fail_load_tokens">鏃犳硶鍔犺浇浠ｅ竵鍒楄〃</string>
+    <string name="error_create_wallet">鏃犳硶鍒涘缓閽卞寘</string>
+    <string name="all">鍏ㄩ儴</string>
+    <string name="currency">甯佺被</string>
+    <string name="advanced">楂樼骇璁剧疆</string>
+    <string name="copy_wallet_address">澶嶅埗閽卞寘鍦板潃</string>
+    <string name="rename_this_wallet_action">閲嶅懡鍚嶆閽卞寘</string>
+    <string name="hint_contract_name">鍚嶇О</string>
+    <string name="hint_contract_venue">鍦洪</string>
+    <string name="hint_contract_date">鏃ユ湡</string>
+    <string name="hint_contract_price">浠锋牸</string>
+    <!-- Price -->
+    <string name="action_use">鍏戞崲</string>
+    <string name="action_sell">鍑哄敭</string>
+    <string name="action_transfer">杞</string>
+    <string name="address">鍦板潃</string>
+    <string name="action_redeem">鍏戞崲</string>
+    <string name="add_ids_to_redeem">闂ㄧエ宸插厬鎹?/string>
+    <string name="title_use_token">浣跨敤闂ㄧエ</string>
+    <!--<string name="token_balance">%1$s%2$s %3$s</string>-->
+    <string name="create_sell_order">鍒涘缓鍗栧崟</string>
+    <string name="select_tickets">閫夋嫨瑕佸嚭鍞殑%1$s:</string>
+    <string name="select_tickets_redeem">閫夋嫨瑕佸厬鎹㈢殑闂ㄧエ:</string>
+    <string name="action_purchase">璐拱</string>
+    <string name="toolbar_header_wallet">鎴戠殑閽卞寘</string>
+    <string name="toolbar_header_settings">鎴戠殑璁剧疆</string>
+    <string name="toolbar_header_help">甯姪</string>
+    <string name="toolbar_header_transactions">鎴戠殑璐﹀崟</string>
+    <string name="settings_my_wallet_address">鎴戠殑閽卞寘鍦板潃</string>
+    <string name="settings_notification">閫氱煡璁剧疆</string>
+    <string name="title_redeem">鍏戞崲闂ㄧエ</string>
+    <string name="waiting_for_blockchain">璇风瓑寰呭尯鍧楅摼澶勭悊鏁版嵁</string>
+    <string name="btn_text_apply">搴旂敤</string>
+    <string name="filter_by">绛涢€?</string>
+    <string name="filter_date_label">鏃ユ湡</string>
+    <string name="filter_price_label">浠锋牸</string>
+    <string name="filter_distance_label">璺濈</string>
+    <string name="filter_timeframe_label">鏃堕棿</string>
+    <string name="set_a_price">璁剧疆涓€涓环鏍?</string>
+    <string name="learn_more_about_ethereum">鏇村鍏充簬浠ュお鍧婄殑鐭ヨ瘑</string>
+    <string name="price_per_ticket">闂ㄧエ鍗曚环</string>
+    <string name="set_price_subtext_abr">璁剧疆浠ュお甯佷环鏍?ETH)</string>
+    <string name="transfer_tickets">杞闂ㄧエ</string>
+    <string name="link_valid_until">MagicLink 鏈夋晥鏈熻嚦:</string>
+    <string name="generate_pick_up_link">閫氳繃 MagicLink 杞嚭闂ㄧエ</string>
+    <string name="transfer_now">鐩存帴杞嚭闂ㄧエ</string>
+    <string name="to">鑷?/string>
+    <string-array name="filter_date">
+        <item>鏈€鏂?/item>
+        <item>鏈€鏃?/item>
+    </string-array>
+    <string-array name="filter_price">
+        <item>浠庝綆鍒伴珮</item>
+        <item>浠庨珮鍒颁綆</item>
+    </string-array>
+    <string-array name="filter_distance">
+        <item>浠讳綍</item>
+        <item>1 鍏噷</item>
+        <item>5 鍏噷</item>
+        <item>10 鍏噷</item>
+    </string-array>
+    <string-array name="filter_timeframe">
+        <item>浠讳綍</item>
+        <item>1 鍛?/item>
+        <item>1 涓湀</item>
+        <item>1 骞?/item>
+    </string-array>
+    <string-array name="filter_match">
+        <item>浠讳綍</item>
+        <item>1-64</item>
+    </string-array>
+    <string-array name="filter_class">
+        <item>浠讳綍</item>
+        <item>VIP</item>
+    </string-array>
+    <string-array name="filter_seats">
+        <item>浠讳綍</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="filter_search_date">
+        <item>DD/MM/YY</item>
+    </string-array>
+    <string name="quantity_of_tickets">闂ㄧエ鏁伴噺</string>
+    <string name="total_cost_label">鎬讳环:</string>
+    <string name="equivalent_in_usd">鐩稿綋浜嶶SD</string>
+    <string name="select_quantity_tickets">閫夋嫨%1$s鏁伴噺</string>
+    <string name="ticket_redeemed">浣犵殑闂ㄧエ宸茬粡琚厬鎹?/string>
+    <string name="search_for">鎼滅储:</string>
+    <string name="filter_search_class">绛夌骇</string>
+    <string name="filter_search_seats">杩炲骇鏁伴噺</string>
+    <string name="search_label_match">姣旇禌</string>
+    <string name="help_question1">浠ュお甯?浠ュお鍧婃槸浠€涔?</string>
+    <string name="help_question2">涓轰粈涔圓lphaWallet闇€瑕佽皟鐢ㄤ互澶竵?</string>
+    <string name="help_question3">鎬庢牱鎵嶈兘鎷垮埌娉曞竵?</string>
+    <string name="help_question4">鍔╄璇嶆槸鍋氫粈涔堢殑?</string>
+    <string name="help_question5">鎬庢牱鎶婁互澶竵杞埌AlphaWallet鍐?</string>
+    <string name="help_question6">浠€涔堟槸 TokenScript?</string>
+    <string name="twenty_four_hours">24灏忔椂</string>
+    <string name="appreciation">鍗囧€?/string>
+    <string name="eth_per_ticket">%1$s/闂ㄧエ</string>
+    <string name="ethereum">浠ュお鍧?/string>
+    <string name="ethereum_blockchain">鍩轰簬浠ュお鍧婃櫤鑳藉悎绾?/string>
+    <string name="issuer">鍙戣鏂?</string>
+    <string name="root_title">璁惧瀹夊叏鎬у彈鎹?/string>
+    <string name="root_body">浣犵殑鎵嬫満鏈塺oot鏉冮檺锛屼絾绉侀挜浠嶅彈Android瀹夊叏鍖哄煙鍔犲瘑淇濇姢銆?绗笁鏂归敭鐩樻垨鍓创鏉挎煡鐪嬪櫒鏄釜鏀诲嚮濯掍粙锛屽綋鎮ㄨ緭鍏ュ瘑閽ユ椂渚垮彲璇诲彇鎮ㄧ殑瀵嗛挜銆?AlphaWallet灏芥渶澶у姫鍔涢€氳繃鍏抽棴閿洏鑷姩鏇存鏉ュ噺灏戣繖绉嶆儏鍐点€?濡傛灉鎮ㄤ互root韬唤杩愯锛屽缓璁偍浠呬娇鐢ㄤ富娴侀敭鐩樺簲鐢ㄧ▼搴忥紝杩愯楂樿川閲忕殑闃茬梾姣掑簲鐢ㄧ▼搴忥紝骞朵娇鐢ㄥ箍鍙楄鍙拰濂借瘎鐨勫紑婧愭牴绠＄悊鍣紝渚嬪Magisk鎴朣uperSU銆?鏈€缁堬紝绉侀挜瀹夊叏杩樻槸鎮ㄧ殑璐ｄ换銆?/string>
+    <string name="contact_us">闇€瑕佹洿澶氱殑甯姪? 鑱旂郴鎴戜滑</string>
+    <string name="confirm_sale_title">纭鍑哄敭?</string>
